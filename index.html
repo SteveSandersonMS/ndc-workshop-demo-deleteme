@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>DotNetObjectRefDemo</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <app>Loading...</app>
+
+    <script src="_framework/blazor.webassembly.js"></script>
+
+    <script>
+        function focusElement(element) {
+            element.focus();
+        }
+    </script>
+
+    <script>
+
+        function initFunkyScroller(elem, component) {
+            console.log('Element', elem);
+            console.log('Component', component);
+
+            elem.addEventListener('scroll', _ => {
+                //clearTimeout(elem.debounceTimer);
+                //elem.debounceTimer = setTimeout(() => {
+                    component.invokeMethodAsync(
+                        'UpdateScrollInfo',
+                        elem.scrollTop);
+                //}, 250);
+            });
+        }
+    </script>
+</body>
+</html>
